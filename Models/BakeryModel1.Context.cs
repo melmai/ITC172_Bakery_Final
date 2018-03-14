@@ -19,7 +19,12 @@ namespace Bakery.Models
             : base("name=BakeryEntities")
         {
         }
-    
+
+        internal int Register(string personLastName, string personFirstName, string personEmail, string personPhone)
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
