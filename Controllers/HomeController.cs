@@ -9,9 +9,9 @@ namespace Bakery.Controllers
 {
     public class HomeController : Controller
     {
+        BakeryEntities db = new BakeryEntities();
         public ActionResult Index()
         {
-            BakeryEntities db = new BakeryEntities();
             return View(db.Products.ToList());
         }
 

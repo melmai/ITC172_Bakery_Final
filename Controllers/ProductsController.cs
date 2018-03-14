@@ -19,7 +19,7 @@ namespace Bakery.Controllers
         {
             return View(db.Products.ToList());
         }
-
+        
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
