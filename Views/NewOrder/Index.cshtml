@@ -1,0 +1,68 @@
+﻿@model Bakery.Models.NewOrder
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>New Order</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Create New Order</h4>
+    <hr />
+
+    <!-- Customer Key -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="CustomerKey" class="control-label col-md-2">Customer ID</label>
+        <div class="col-md-10">
+            @Html.DropDownList("CustomerKey", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CustomerKey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Employee Key -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="EmployeeKey" class="control-label col-md-2">Employee ID</label>
+        <div class="col-md-10">
+            @Html.DropDownList("EmployeeKey", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmployeeKey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Product Key -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="ProductKey" class="control-label col-md-2">Item</label>
+        <div class="col-md-10">
+            @Html.DropDownList("ProductKey", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmployeeKey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <!-- Quantity -->
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label for="SaleDetailQuantity" class="control-label col-md-2">Quantity</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SaleDetailQuantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SaleDetailQuantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add Customer" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<!-- Add link to add additional products -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -175,6 +175,7 @@
     <Compile Include="Models\Employee.cs">
       <DependentUpon>BakeryModel1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\NewOrder.cs" />
     <Compile Include="Models\NewPerson.cs" />
@@ -254,10 +255,10 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\Result.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
+    <Content Include="Views\NewOrder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\NewOrder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
