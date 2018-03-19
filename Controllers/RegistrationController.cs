@@ -14,7 +14,7 @@ namespace Bakery.Controllers
         // GET: Registration
         public ActionResult Index()
         {
-            return View();
+            return View(db.People.ToList());
         }
 
         public ActionResult Register()
@@ -25,31 +25,29 @@ namespace Bakery.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public ActionResult Register([Bind(Include = "PersonLastName, PersonFirstName, PersonEmail, PersonPhone")] NewPerson p)
+        public ActionResult Register([Bind(Include = "PersonLastName, PersonFirstName, PersonEmail, PersonPhone")] NewPerson np)
         {
-            int result = db.Register(p.PersonLastName, p.PersonFirstName, p.PersonEmail,
-                                         p.PersonPhone);
-
-            if (result != -1)
+            Person p = new Person
             {
-                return RedirectToAction("Success");
-            }
+                PersonLastName = np.PersonLastName,
+                PersonFirstName = np.PersonFirstName,
+                PersonEmail = np.PersonEmail,
+                PersonPhone = np.PersonPhone,
+                PersonDateAdded = DateTime.Now
+            };
 
-            return RedirectToAction("Failure");
+            db.People.Add(p);
+            db.SaveChanges();
+
+            Message m = new Message();
+            m.MessageText = "User successfully registered!";
+
+            return View("Result", m);
         }
 
-        public ActionResult Success()
+        public ActionResult Result(Message m)
         {
-            Message successMsg = new Message();
-            successMsg.MessageText = "Thanks for registering.";
-            return View("Result", successMsg);
-        }
-
-        public ActionResult Failure()
-        {
-            Message failureMsg = new Message();
-            failureMsg.MessageText = "Sorry, but something seems to have gone wrong with the registration.";
-            return View("Result", failureMsg);
+            return View(m);
         }
     }
 }

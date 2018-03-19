@@ -20,7 +20,7 @@ namespace Bakery.Models
         {
         }
 
-        internal int Register(string personLastName, string personFirstName, string personEmail, string personPhone)
+        internal int Register(string PersonLastName, string PersonFirstName, string PersonEmail, string PersonPhone)
         {
             throw new NotImplementedException();
         }

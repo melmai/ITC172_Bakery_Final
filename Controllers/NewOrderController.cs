@@ -17,8 +17,5 @@ namespace Bakery.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
     }
 }
