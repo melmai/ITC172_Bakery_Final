@@ -256,6 +256,7 @@
     <Content Include="Views\Registration\Result.cshtml" />
     <Content Include="Views\Registration\Register.cshtml" />
     <Content Include="Views\NewOrder\Index.cshtml" />
+    <Content Include="Views\NewOrder\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
