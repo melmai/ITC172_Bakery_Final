@@ -29,21 +29,20 @@ namespace Bakery.Controllers
             sale.SaleDate = DateTime.Now;
             sale.CustomerKey = no.CustomerKey;
             sale.EmployeeKey = no.EmployeeKey;
-            db.Sales.Add(sale);
-            db.SaveChanges();
+            db.Sale.Add(sale);
 
             SaleDetail sd = new SaleDetail();
-            int salekey = (from order in db.Sales
-                          where order.SaleDate.Equals(sale.SaleDate)
-                          select order.SaleKey).FirstOrDefault();
-            sd.SaleKey = (int)salekey;
-            sd.ProductKey = no.ProductKey;
-            sd.SaleDetailQuantity = no.SaleDetailQuantity;
+            int salekey = (from order in db.Sale
+                           where order.SaleDate == (sale.SaleDate)
+                           select order.SaleKey).FirstOrDefault();
+            sd.SaleKey = salekey;
             sd.SaleDetailPriceCharged = (from product in db.Products
                                          where product.ProductKey.Equals(no.ProductKey)
                                          select product.ProductPrice).FirstOrDefault();
+            sd.ProductKey = no.ProductKey;
+            sd.SaleDetailQuantity = no.SaleDetailQuantity;
             sd.SaleDetailSaleTaxPercent = (decimal)0.09;
-            db.SaleDetails.Add(sd);
+            db.SaleDetail.Add(sd);
             db.SaveChanges();
 
             Message m = new Message();

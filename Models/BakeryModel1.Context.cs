@@ -33,7 +33,7 @@ namespace Bakery.Models
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Sale> Sales { get; set; }
-        public virtual DbSet<SaleDetail> SaleDetails { get; set; }
+        public virtual DbSet<Sale> Sale { get; set; }
+        public virtual DbSet<SaleDetail> SaleDetail { get; set; }
     }
 }
